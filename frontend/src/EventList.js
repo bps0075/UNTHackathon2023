@@ -16,7 +16,7 @@ const EventList = () => {
     
     const fetchEvents = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/events');
+            const response = await fetch('http://localhost:8080/api/events/getAllEvents');
             const data = await response.json();
             setEvents(data);
         } catch (error) {
@@ -25,8 +25,10 @@ const EventList = () => {
     };
 
     return (
+
         <div>
-            <h1>Event List</h1>
+            <title>Event list</title>
+            <h1 id='EventListHeader'>Event List</h1>
             <ul className='event-list'>
                 {events.map((event, index ) => (
                     <div key={index} className={`event-item ${index % 2 === 0 ? "evenList" : "oddList" }`}>

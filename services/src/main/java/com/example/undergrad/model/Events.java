@@ -1,15 +1,45 @@
 package com.example.undergrad.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jdk.jfr.Event;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 
 @Entity
-public class Events {
+public class Events implements Comparable<Events> {
+
+    public static ArrayList<Events> eventList = new ArrayList<>();
+
+
+    private static int currMaxIndex = 0; //for used for automatic eventID assign
+
+
+    public static boolean checkAvability(Events event){
+        for(Events other : eventList){
+            if(other.isConflict(event)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean addEvent(Events event){ //maintain sorted
+        if(checkAvability(event)){
+            eventList.add(event);
+            currMaxIndex = Math.max(currMaxIndex, event.getEventid()); //update currMaxIndex
+            Collections.sort(eventList); //can be improved by binanry serach then insert (n log n to n)
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private String eventName;
     public int getEventid() {
         return eventid;
@@ -50,9 +80,11 @@ public class Events {
         this.endDateandTime = endDateandTime;
     }
 
-
-    public Events(int eventid, Date startDateandTime, Date endDateandTime, String eventName) {
-        this.eventid = eventid;
+    public Events(@JsonProperty("startTime") Date startDateandTime,
+                  @JsonProperty("endTime") Date endDateandTime,
+                  @JsonProperty("eventName") String eventName) {
+        this.eventid = currMaxIndex + 1;
+        currMaxIndex++;
         this.startDateandTime = startDateandTime;
         this.endDateandTime = endDateandTime;
         this.eventName = eventName;
@@ -70,6 +102,10 @@ public class Events {
 
     }
 
-
-
+   @Override
+    public int compareTo(Events event) {
+        long thisStart = this.startDateandTime.getTime();
+        long eventStart = event.getStartDateandTime().getTime();
+        return Long.compare(thisStart, eventStart);
+    }
 }
