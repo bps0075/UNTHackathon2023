@@ -17,6 +17,7 @@
   .event-list{
     align-items: center;
     width: 50%;
+    margin-left: 22%;
   }
   .oddList{
     background-color: rgba(246, 246, 246, 0.944);

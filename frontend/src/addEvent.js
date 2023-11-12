@@ -3,7 +3,7 @@ import './addEvent.css'
 import { useNavigate } from 'react-router-dom';
 
 
-const CreateEvent = () => {
+const CreateEvent = ( { updateEventList }) => {
   const navigate = useNavigate();
 
   const [eventName, setEventName] = useState('');
@@ -53,8 +53,9 @@ const CreateEvent = () => {
       if (isAvailable) {
         setInfo('Event is added!');
         console.log('Event is added');
-        // You might want to show a success message or perform other actions
-      } else {
+       // updateEventList(); // Call the prop function to fetch events, causes error
+
+      }else{
         setInfo('Event conflicts others!');
         console.log('Other events conflict');
         // You might want to show a conflicts message or perform other actions
