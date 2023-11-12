@@ -1,0 +1,9 @@
+#eventName {
+    font-weight: bold;
+    color: blue;
+  }
+  
+  #eventTime {
+    font-style: italic;
+    color: green;
+  }
