@@ -1,9 +1,11 @@
 // EventList.js
 import React, { useState, useEffect } from 'react';
 import './EventList.css'
+import { useNavigate } from 'react-router-dom';
 
 const EventList = () => {
     const [events, setEvents] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchEvents();
@@ -29,6 +31,10 @@ const EventList = () => {
         <div>
             <title>Event list</title>
             <h1 id='EventListHeader'>Event List</h1>
+            <button type="button" id='moveToCreate' onClick={() => navigate('/create-event')}>
+            Create event
+            </button>
+
             <ul className='event-list'>
                 {events.map((event, index ) => (
                     <div key={index} className={`event-item ${index % 2 === 0 ? "evenList" : "oddList" }`}>
