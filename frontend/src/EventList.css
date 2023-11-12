@@ -16,7 +16,7 @@
 
   .event-list{
     align-items: center;
-    width: 50%;
+    width: 70%;
   }
   .oddList{
     background-color: rgba(246, 246, 246, 0.944);
@@ -34,4 +34,8 @@
     width: 150px;
     min-height: 40px;
     border-radius: 20px;
+}
+
+*{
+    border-style: dashed;
 }
