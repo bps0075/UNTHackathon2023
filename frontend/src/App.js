@@ -1,12 +1,18 @@
-import React from 'react';
-import Login from './addEvent';
 import './App.css';
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CreateEvent from './addEvent';
+//import EventList from './EventList';
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/create-event" element={<CreateEvent />} />
+      {/*  <Route path="/event-list" element={<EventList />} /> */}
+      </Routes>
+    </Router>
   );
 }
 
