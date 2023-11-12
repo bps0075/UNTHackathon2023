@@ -1,5 +1,6 @@
 // EventList.js
 import React, { useState, useEffect } from 'react';
+import './EventList.css'
 
 const EventList = () => {
     const [events, setEvents] = useState([]);
@@ -8,6 +9,11 @@ const EventList = () => {
         fetchEvents();
     }, []);
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+        return new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
+      };
+    
     const fetchEvents = async () => {
         try {
             const response = await fetch('http://localhost:8080/api/events');
@@ -21,11 +27,14 @@ const EventList = () => {
     return (
         <div>
             <h1>Event List</h1>
-            <ul>
-                {events.map(event => (
-                    <li key={event.eventId}>
-                        {event.eventName} - {event.startDateAndTime} to {event.endDateAndTime}
-                    </li>
+            <ul className='event-list'>
+                {events.map((event, index ) => (
+                    <div key={index} className={`event-item ${index % 2 === 0 ? "evenList" : "oddList" }`}>
+                    <div id="eventName">{event.eventName}</div>
+                    <div id="eventTime">
+                     Start Time: {formatDate(event.startDateandTime)} < br/> End Time: {formatDate(event.endDateandTime) }< br/><br/>
+                    </div>
+                </div>
                 ))}
             </ul>
         </div>
