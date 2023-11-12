@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './addEvent.css'
+import { useNavigate } from 'react-router-dom';
+
 
 const CreateEvent = () => {
+  const navigate = useNavigate();
+
   const [eventName, setEventName] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
@@ -154,6 +158,9 @@ const CreateEvent = () => {
         <button type="input" onClick={checkAvailability}>
           Check Availability
         </button>
+        <button type="button" onClick={() => navigate('/event-list')}>
+        Event List
+      </button>
       </form>
       {errorMessage && ( //error && checks error first then
         <div className="popup-error">
