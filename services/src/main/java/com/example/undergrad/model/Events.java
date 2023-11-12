@@ -1,14 +1,9 @@
 package com.example.undergrad.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 import java.util.Date;
 
 
-@Entity
 public class Events {
     private String eventName;
     public int getEventid() {
@@ -19,7 +14,7 @@ public class Events {
         this.eventid = eventid;
     }
 
-    @Id
+
     private int eventid;
     private Date startDateandTime;
     private Date endDateandTime;
