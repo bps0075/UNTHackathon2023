@@ -1,0 +1,36 @@
+#addEventMain{
+    margin-top: 3%;
+    background-color: rgb(211, 216, 216);
+    display: inline-block;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+#HeaderaddEvent {
+    background-color: #b5dfb7;
+    color: #200a0a;
+    width: inline;
+    margin: auto; 
+    text-align: center;
+    border-radius: 25px;
+    font-size: 30px;
+}
+#inputEventName input{
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 270px;
+}
+#inputStart input{
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+#inputEnd input{
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
