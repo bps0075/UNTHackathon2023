@@ -1,16 +1,19 @@
 #addEventMain{
     margin-top: 3%;
     background-color: rgb(211, 216, 216);
-    display: inline-block;
+   
+    display: flex; /* Set it as a flex container */
+    flex-direction: column; /* Optional, if you want the content in a column */
+    width: max-content;
+    margin-left: 40%;
     padding: 10px;
     border-radius: 20px;
-
 }
 #HeaderaddEvent {
-    background-color: #b5dfb7;
+    background-color: #858985;
     color: #200a0a;
     width: inline;
-    margin: auto; 
+    margin: 10px; 
     text-align: center;
     border-radius: 25px;
     font-size: 30px;
