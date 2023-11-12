@@ -17,12 +17,6 @@ public class EventsController {
     @GetMapping("/getAllEvents")
     public List<Events> getAllEvents() {
         // Dummy data for demonstration purposes
-        System.out.println("Get");
-        List<Events> eventsList = new ArrayList<>(); //need to be changed to get actual data
-        eventsList.add(new Events( new Date(), new Date(), "Event 1"));
-        eventsList.add(new Events( new Date(), new Date(), "Event 2"));
-        eventsList.add(new Events( new Date(), new Date(), "Event 3"));
-
         //return eventsList;
        return Events.eventList;
     }

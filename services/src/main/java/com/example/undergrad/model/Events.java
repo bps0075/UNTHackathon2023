@@ -33,6 +33,7 @@ public class Events implements Comparable<Events> {
         if(checkAvability(event)){
             eventList.add(event);
             currMaxIndex = Math.max(currMaxIndex, event.getEventid()); //update currMaxIndex
+            Database.updateEvents("events.db", event);
             Collections.sort(eventList); //can be improved by binanry serach then insert (n log n to n)
             return true;
         }else{
